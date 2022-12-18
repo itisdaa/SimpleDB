@@ -10,7 +10,7 @@ SimpleDB v0 is a CSV-based database developed by Hassaan Maqsood and Usman Shah,
 3. create a SimpleDB object by `var database = new SimpleDB('myfirstsimpledb')`
 4. Call the `connect(port)` method to start listening for requests.
 5. Use the following methods to interact with the database:
-  - 'add' to add a valid array to the database.
-  - 'remove' to delete an entry at a specific index.
-  - 'get' to retrieve an array at a specific index.
-  - 'search' to search the entire database for a given string and return an array of indices where the string was found.
+   - `add(entry)` to add a valid array to the database.
+   - `remove(index)` to delete an entry at a specific index.
+   - `get(index)` to retrieve an array at a specific index.
+   - `search(string)` to search the entire database for a given string and return an array of indices where the string was found.
