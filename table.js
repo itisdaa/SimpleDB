@@ -1,4 +1,5 @@
-export class table {
+//need to add functionality to add, update or remove a column
+module.exports = class table {
   constructor(...columns) {
     columns.forEach((column) => {
       this[column]=[];
@@ -25,6 +26,7 @@ export class table {
     return true;
   };
   update(column, index, entry) {
+    //entry is not an array, a string or number
     if(!(getIndex >= 0 && getIndex < this[Object.keys(this)[0]].length)) {
       console.error("Invalid Index");
       return false;
@@ -55,10 +57,12 @@ export class table {
     };
     return resultArray;
   };
-  static query(array, conditionFunction) {
+  static query(columnArray, conditionFunction) {
     //return the entries (array) in column that statisfy conditionFunction
+    //conditionFunction must return boleen
+    //conditionFunction is security vunerability
     let queryResultArray = [];
-    array.forEach((entry) => {
+    columnArray.forEach((entry) => {
       if(conditionFunction(entry)) {
         queryResultArray.push(entry);
       }
@@ -67,11 +71,12 @@ export class table {
   };
   static sortColumn(columnArray, sortFunction) {
     //crete an index range for reference to be used on other columns
-    const indexRange = Array.from({ columnArray.length }, (_, i) => 0 + i);
+    var arrayLength = columnArray.length
+    const indexRange = Array.from({ arrayLength }, (_, i) => 0 + i);
     //bubble sort
     for (i = 0; i < columnArray.length; i++) {
         for (j = 0; j < columnArray.length - i -1 ; j++) {
-            if (columnArray[j] < columnArray[j+1]) {
+            if (sortFunction(j, j+1)) {
                   // swap the two entreies
                   let temp = columnArray[j];
                   columnArray[j] = columnArray[j + 1];
