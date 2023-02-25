@@ -1,7 +1,5 @@
 //need to add functionality to add, update or remove a column
-module.exports = 
-  {
-  class table {
+export class table {
   constructor(...columns) {
     columns.forEach((column) => {
       this[column]=[];
