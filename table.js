@@ -1,5 +1,5 @@
 //need to add functionality to add, update or remove a column
-export class table {
+class table {
   constructor(...columns) {
     columns.forEach((column) => {
       this[column]=[];
@@ -100,7 +100,6 @@ export class table {
     });
     return sortedColumnArray;
   }
-}
   static isMember(string, array) {
     let memberArray = [];
     for (let index in array) {
@@ -112,4 +111,5 @@ export class table {
     }
     return memberArray;
   };
-}
+};
+module.exports = {table};
