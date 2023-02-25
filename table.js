@@ -112,4 +112,4 @@ class table {
     return memberArray;
   };
 };
-module.exports = {table};
+//module.exports = {table};
