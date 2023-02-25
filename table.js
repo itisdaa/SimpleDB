@@ -1,5 +1,4 @@
-//need to add functionality to add, update or remove a column
-class table {
+module.exports = class table {
   constructor(...columns) {
     columns.forEach((column) => {
       this[column]=[];
@@ -27,7 +26,7 @@ class table {
   };
   update(column, index, entry) {
     //entry is not an array, a string or number
-    if(!(getIndex >= 0 && getIndex < this[Object.keys(this)[0]].length)) {
+    if(!(index >= 0 && index < this[Object.keys(this)[0]].length)) {
       console.error("Invalid Index");
       return false;
     }
@@ -49,8 +48,8 @@ class table {
   search(string) {
     var resultArray = [];
     for(let key in this) {
-      for (let index in key) {
-        if (key[index] == string) {
+      for (let index in this[key]) {
+        if (this[key][index] == string) {
           resultArray.push({column: key, cellIndex:index});
         }
       }
@@ -74,42 +73,8 @@ class table {
     var arrayLength = columnArray.length
     const indexRange = Array.from({ arrayLength }, (_, i) => 0 + i);
     //bubble sort
-    for (i = 0; i < columnArray.length; i++) {
-        for (j = 0; j < columnArray.length - i -1 ; j++) {
+    for (let i = 0; i < columnArray.length; i++) {
+        for (let j = 0; j < columnArray.length - i -1 ; j++) {
             if (sortFunction(j, j+1)) {
                   // swap the two entreies
-                  let temp = columnArray[j];
-                  columnArray[j] = columnArray[j + 1];
-                  columnArray[j + 1] = temp;
-                  temp = indexRange[j];
-                  indexRange[j] = indexRange[j+1];
-                  indexRange[j+1] = temp;
-                  temp = null;
-            };
-        }
-    }
-    return {index:indexRange, sortedColumnArray: columnArray};
-  };
-  static sortByIndex(columnArray, indexArray) {
-    if(Math.max(...indexArray) != columnArray.length) {
-      return [];
-    }
-    let sortedColumnArray = [];
-    indexArray.forEach((element) => {
-        sortedColumnArray.push(columnArray[index]);
-    });
-    return sortedColumnArray;
-  }
-  static isMember(string, array) {
-    let memberArray = [];
-    for (let index in array) {
-      if(string == array[index]) {
-        memberArray.push(1);
-      } else {
-        memberArray.push(0);
-      }
-    }
-    return memberArray;
-  };
-};
-//module.exports = {table};
+                  let temp = columnArray[j
